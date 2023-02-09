@@ -1,0 +1,36 @@
+﻿@{
+    Layout = null;
+
+    var seriesTitle = "The Amazing SpiderMan";
+    var issueNumber = 700;
+    var description = "<p>Final Issue</p>";
+    var artists = new string[]
+    {
+        "Script: Dan Slott",
+        "Pencils: Humberto Ramos",
+        "Inks: Victor Olazba",
+        "Colours: Edger dalgado",
+        "Letters: Chris eliopulars"
+
+    };
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <h1>@seriesTitle</h1>
+        <h2>@issueNumber</h2>
+        <h5>Description</h5>
+        <div>@Html.Raw(description)</div>
+
+        <h5>Artisits</h5>
+        <div>@artists</div>
+    </div>
+</body>
+</html>
