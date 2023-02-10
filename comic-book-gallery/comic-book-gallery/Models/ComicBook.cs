@@ -49,7 +49,7 @@ namespace comic_book_gallery.Models
         {
             get
             {
-                return SeriesTitle.Replace("", "-").ToLower() + "-" + IssueNumber + ".jpg";
+                return SeriesTitle.Replace(" ", "-").ToLower() + "-" + IssueNumber + ".jpg";
             }
         }
     }

@@ -4,52 +4,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using comic_book_gallery.Models;
+using comic_book_gallery.Data;
 
 namespace comic_book_gallery.Controllers
 {
     public class ComicBooksController : Controller
     {
-        public ActionResult Detail()
+        private ComicBookRepository _comicBookRepository = null;
+        public ComicBooksController()
+        {
+            _comicBookRepository = new ComicBookRepository();
+        }
+
+        public ActionResult Detail(int? id)
         {
 
-            //Instantiating ComBook model object
-            var comicBook = new ComicBook()
+            if(id == null)
             {
-                SeriesTitle = "The Amazing SpiderMan",
-                IssueNumber = 700,
-                DescriptionHtml = "<p> Final Issue </p>",
+                return HttpNotFound();
+            }
+            var comicBook = _comicBookRepository.GetComicBook(id.Value);
 
-                Artists = new Artist[]
-
-                  {
-                  new Artist()
-                    {
-                    Name ="Dan Slott",
-                    Role = "Script"
-                  },
-                  new Artist()
-                    {
-                    Name ="Humberto Ramos",
-                    Role = "Pencils"
-                  },
-                  new Artist()
-                    {
-                    Name ="Victor Olazba",
-                    Role = "Inks"
-                  },
-                  new Artist()
-                    {
-                    Name ="Edger dalgado",
-                    Role = "Colours"
-                  },
-                  new Artist()
-                    {
-                    Name ="Chris eliopulars",
-                    Role = "Letters"
-                  }
-                  }
-            }; //End of Artists Array
             return View(comicBook);
         }
+
     }
-}
+
+    }
